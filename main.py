@@ -15,6 +15,16 @@ from utils.eval_metric_utils import *
 from utils.auxiliary_utils import *
 from utils.fid_score import return_fid
 
+# Check CUDA availability
+cuda_available = torch.cuda.is_available()
+print(f"CUDA available: {cuda_available}")
+
+# Check CUDA device properties
+if cuda_available:
+    device = torch.device("cuda")
+    print(f"CUDA device: {torch.cuda.get_device_name(device)}")
+    print(f"CUDA capability: {torch.cuda.get_device_capability(device)}")
+
 
 def parse_arg():
     parser = argparse.ArgumentParser(description='attack with feature layer and frequency constraint')
